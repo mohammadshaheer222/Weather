@@ -9,9 +9,7 @@ const App = () => {
   const [data, setData] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [submit, setSubmit] = useState(false);
-  const url =
-    "https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13q=" +
-    encodeURIComponent(searchField);
+  const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13q=${searchField}`;
   const options = {
     method: "GET",
     headers: {
@@ -35,11 +33,17 @@ const App = () => {
   }, []);
 
   const changingEvent = (event) => {
-    setSearchField(event.target.value);
+    setSearchField(
+      event.target.value.charAt(0).toLocaleUpperCase() +
+        event.target.value.slice(1)
+    );
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    clickEvent();
+  };
+  const clickEvent = () => {
     weatherData();
     setSearchField("");
     setSubmit(true);
@@ -50,13 +54,14 @@ const App = () => {
     <>
       <div className="bg-hero bg-cover h-screen flex flex-col items-center justify-center space-y-20 text-gray-600">
         <div className="flex items-center justify-center">
-          
-        <h1 className="text-5xl font-bold md:text-6xl md:font-bold ">Weather Forecast</h1>
+          <h1 className="text-5xl font-bold md:text-6xl md:font-bold ">
+            Weather Forecast
+          </h1>
         </div>
         {data.map((data) => (
           <div
             key={data.current.last_updated_epoch}
-            className="w-72 p-4 bg-opacity-60 text-gray-300 bg-gray-800 rounded-xl space-y-5 border-2 border-gray-500 md:w-96 md:p-7 md:space-y-5"
+            className=" w-72 p-4 bg-opacity-60 text-gray-300 bg-gray-800 rounded-xl space-y-5 border-2 border-gray-500 md:w-96 md:p-7 md:space-y-5"
           >
             <div className="md:flex md:justify-center md:items-center md:flex-col">
               <form onSubmit={handleSubmit}>
@@ -70,7 +75,10 @@ const App = () => {
                     value={searchField}
                     onChange={changingEvent}
                   />
-                  <FaSearch className="absolute inset-y-3.5 end-3 text-white cursor-pointer" />
+                  <FaSearch
+                    onClick={clickEvent}
+                    className="absolute inset-y-3.5 end-3 text-white cursor-pointer"
+                  />
                 </div>
               </form>
             </div>
