@@ -48,7 +48,6 @@ const App = () => {
     setSearchField("");
     setSubmit(true);
   };
-  console.log(data);
 
   return (
     <>
@@ -91,11 +90,15 @@ const App = () => {
                   <h1 className="text-7xl font-semibold">
                     {data.current.temp_c}°C
                   </h1>
+
                   <img
                     className="w-24"
                     src={`${data.current.condition.icon}`}
                     alt=""
                   />
+                  <p className="text-lg font-semibold ml-5 mb-8">
+                    {data.current.condition.text}
+                  </p>
                 </div>
                 <div className="flex justify-between px-2">
                   <p className="flex items-center">
