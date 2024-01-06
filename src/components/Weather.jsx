@@ -52,22 +52,22 @@ const App = () => {
   return (
     <>
       <div className="bg-hero bg-cover h-screen flex flex-col items-center justify-center space-y-20 text-gray-600">
-        <div className="flex items-center justify-center">
-          <h1 className="text-5xl font-bold md:text-6xl md:font-bold ">
+        <div className="flex items-center justify-center ">
+          <h1 className="text-4xl font-bold md:text-6xl md:font-bold ">
             Weather Forecast
           </h1>
         </div>
         {data.map((data) => (
           <div
             key={data.current.last_updated_epoch}
-            className=" w-72 p-4 bg-opacity-60 text-gray-300 bg-gray-800 rounded-xl space-y-5 border-2 border-gray-500 md:w-96 md:p-7 md:space-y-5"
+            className=" w-64 p-4 bg-opacity-60 text-gray-300 bg-gray-800 rounded-xl space-y-5 border-2 border-gray-500 md:w-96 md:p-7 md:space-y-5"
           >
             <div className="md:flex md:justify-center md:items-center md:flex-col">
               <form onSubmit={handleSubmit}>
                 <div className="relative">
                   <FaLocationDot className="absolute inset-y-3.5 start-3 text-white" />
                   <input
-                    className="bg-gray-800 bg-opacity-30 w-64 p-2 rounded-md placeholder:text-xs px-10 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 md:w-80 md:"
+                    className="bg-gray-800 bg-opacity-30 w-56 p-2 rounded-md placeholder:text-xs px-10 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 md:w-80"
                     type="text"
                     placeholder="Find your location"
                     required
